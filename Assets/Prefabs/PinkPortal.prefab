@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8937451854963955312}
   - component: {fileID: 4813649702353307572}
-  - component: {fileID: 4067421994517223528}
   - component: {fileID: 5767732211283687153}
   - component: {fileID: 3356514935164258883}
   m_Layer: 2
   m_Name: PinkPortal
-  m_TagString: Untagged
+  m_TagString: PinkPortal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,19 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4067421994517223528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146916362106586725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7023101884d09244d829b08ccc96f2a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  greenPortal: {fileID: 0}
 --- !u!61 &5767732211283687153
 BoxCollider2D:
   m_ObjectHideFlags: 0
