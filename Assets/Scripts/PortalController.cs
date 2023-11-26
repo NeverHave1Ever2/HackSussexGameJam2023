@@ -42,20 +42,21 @@ public class PortalController : MonoBehaviour
             transform.position = gPortal.transform.position;
         }
 
-        if (collision.tag == "GreenPortal" && pPortal != null && portalCooldown >= 50)
+        else if (collision.tag == "GreenPortal" && pPortal != null && portalCooldown >= 50)
         {
             portalCooldown = 0;
             transform.position = pPortal.transform.position;
         }
+
     }
 
     public void cast(bool colour)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), 20);
-      //  RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), 20);
-        if (hit.collider != null)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), 50);
+        if (hit.collider.tag == "Portal")
         {
             Debug.Log("hit: " + hit.distance);
+            Debug.Log(hit.collider.tag);
             if (colour)
             {
                 if (gPortal != null)
@@ -65,10 +66,8 @@ public class PortalController : MonoBehaviour
 
 
                 Vector3 rot = new Vector3(0f, 0f, hit.normal.x* 90f);
-               // gPortal = Instantiate(green, hit.point, Quaternion.LookRotation(hit.normal, Vector2.right));
                 gPortal = Instantiate(green, hit.point, Quaternion.Euler(rot));
                 Debug.Log("normal: " + hit.normal);
-               // if 
                 gPortal.name = "greenPortal";
             }
 
@@ -86,4 +85,5 @@ public class PortalController : MonoBehaviour
         }
         else Debug.Log("no hit");
     }
+
 }

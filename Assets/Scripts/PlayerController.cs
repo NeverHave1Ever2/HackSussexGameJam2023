@@ -9,12 +9,13 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D _body;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    public float WalkSpeed = 10f;
-    public float JumpHeight = 20f;
+
     public Transform respawnPoint;
 
-    private float horizontal;
-    private bool isFacingRight = true;
+    public float horizontal;
+    public float walk = 10f;
+    public float bounce = 20f;
+    public bool isFacingRight = true;
 
 
     void Update()
@@ -31,14 +32,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _body.velocity = new Vector2(horizontal * WalkSpeed, _body.velocity.y);
+        _body.velocity = new Vector2(horizontal * walk, _body.velocity.y);
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed && IsGrounded())
         {
-            _body.velocity = new Vector2(_body.velocity.x, JumpHeight);
+            _body.velocity = new Vector2(_body.velocity.x, bounce);
         }
 
         if (context.canceled && _body.velocity.y > 0f)
@@ -65,14 +66,18 @@ public class PlayerController : MonoBehaviour
         horizontal = context.ReadValue<Vector2>().x;
     }
 
-    public void OnPlayerHitCheckPoint(CheckPoint checkPoint)
+    public void onPlayerHitCheckPoint(CheckPoint checkPoint)
     {
         respawnPoint.position = checkPoint.transform.position;
     }
 
-    public void OnPlayerHitObsticle()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        _body.position = respawnPoint.position;
-        _body.velocity = Vector2.zero;
+        if (collision.tag == "Hazard")
+        {
+            Debug.Log("Dead");
+            transform.position = respawnPoint.position;
+        }
     }
+
 }

@@ -6,6 +6,7 @@ public class CheckPoint : PlayerInteractable
 {
     protected override void OnPlayerTouch(Collider2D collision)
     {
-        collision.gameObject.SendMessage("OnPlayerHitCheckPoint", this);
+        collision.gameObject.SendMessage("onPlayerHitCheckPoint", this);
     }
 }
+
