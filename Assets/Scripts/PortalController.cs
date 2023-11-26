@@ -64,7 +64,7 @@ public class PortalController : MonoBehaviour
                 }
 
 
-                Vector3 rot = new Vector3(0f, 0f, hit.normal.x* 90f + hit.normal.y * 90f);
+                Vector3 rot = new Vector3(0f, 0f, hit.normal.x* 90f);
                // gPortal = Instantiate(green, hit.point, Quaternion.LookRotation(hit.normal, Vector2.right));
                 gPortal = Instantiate(green, hit.point, Quaternion.Euler(rot));
                 Debug.Log("normal: " + hit.normal);
@@ -79,7 +79,7 @@ public class PortalController : MonoBehaviour
                     Destroy(pPortal);
                 }
 
-                Vector3 rot = new Vector3(0f, 0f, hit.normal.x * 90f + hit.normal.y * 90f);
+                Vector3 rot = new Vector3(0f, 0f, hit.normal.x * 90f);
                 pPortal = Instantiate(pink, hit.point, Quaternion.Euler(rot));
                 pPortal.name = "pinkPortal";
             }
