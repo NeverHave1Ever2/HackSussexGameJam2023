@@ -6,14 +6,17 @@ TagManager:
   tags:
   - GreenPortal
   - PinkPortal
+  - UnPortal
+  - Portal
+  - Hazard
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - 
+  - Surface
   - 
   - 
   - 
