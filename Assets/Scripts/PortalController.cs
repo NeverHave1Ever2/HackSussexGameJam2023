@@ -31,18 +31,18 @@ public class PortalController : MonoBehaviour
             cast(false);
         }
 
-        portalCooldown++;
+        portalCooldown+= Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "PinkPortal" && gPortal != null && portalCooldown >= 50)
+        if (collision.tag == "PinkPortal" && gPortal != null && portalCooldown >= 0.2)
         {
             portalCooldown = 0;
             transform.position = gPortal.transform.position;
         }
 
-        if (collision.tag == "GreenPortal" && pPortal != null && portalCooldown >= 50)
+        if (collision.tag == "GreenPortal" && pPortal != null && portalCooldown >= 0.2)
         {
             portalCooldown = 0;
             transform.position = pPortal.transform.position;
@@ -64,7 +64,7 @@ public class PortalController : MonoBehaviour
                 }
 
 
-                Vector3 rot = new Vector3(0f, 0f, hit.normal.x* 90f);
+                Vector3 rot = new Vector3(0f, 0f, hit.normal.x* -90f);
                // gPortal = Instantiate(green, hit.point, Quaternion.LookRotation(hit.normal, Vector2.right));
                 gPortal = Instantiate(green, hit.point, Quaternion.Euler(rot));
                 Debug.Log("normal: " + hit.normal);
